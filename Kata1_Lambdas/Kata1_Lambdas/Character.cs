@@ -14,5 +14,4 @@ public class Character
     {
         PrimaryAction.Invoke();
     }
-    
 }

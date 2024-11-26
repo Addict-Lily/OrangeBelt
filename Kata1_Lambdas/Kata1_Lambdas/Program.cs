@@ -28,6 +28,7 @@ class Program
                 Console.WriteLine("Healer has no one to heal!");
             }
         }
+
         characters.Where(c => c.Health < 50).ToList().ForEach(c =>
             {
                 if (c.Name == "Warrior")
@@ -38,9 +39,8 @@ class Program
                 {
                     c.PerformAction();
                 }
-            
+
             }
         );
-        
     }
 }
