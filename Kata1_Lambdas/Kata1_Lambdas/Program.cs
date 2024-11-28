@@ -8,13 +8,16 @@ class Program
         var healer = new Character("Healer",60,() => Console.WriteLine("Healer heals!"));
         
         List<Character> characters = new List<Character> { warrior, healer };
-        
-        if (warrior.Health < 50)
+
+
+        foreach (var character in characters)
         {
-            warrior.PerformAction();
-        }
-        
-        if (healer.Health >= 50)
+            if (character.Health < 50)
+            {
+                character.PerformAction();
+            }
+        } 
+        if(healer.Health >= 50)
         {
             var characterToHeal = characters.Where(c => c.Health < 50).OrderBy(c => c.Health).FirstOrDefault();
             if (characterToHeal != null)
@@ -28,19 +31,12 @@ class Program
                 Console.WriteLine("Healer has no one to heal!");
             }
         }
-
-        characters.Where(c => c.Health < 50).ToList().ForEach(c =>
-            {
-                if (c.Name == "Warrior")
-                {
-                    c.PerformAction();
-                }
-                else if (c.Name == "Healer")
-                {
-                    c.PerformAction();
-                }
-
-            }
-        );
+        
+        foreach (var character in characters.Where(c => c.Health < 50))
+        {
+            character.Health += 10;
+            character.PerformAction();
+        }
+            
     }
 }
