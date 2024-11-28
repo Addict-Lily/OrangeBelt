@@ -12,7 +12,7 @@ public class Character
         Health = health;
     }
     
-    public event Action<string> HealthChanged;
+    public event Action<Character, int> HealthChanged;
 
     public void Attack(Character target)
     {
@@ -30,6 +30,6 @@ public class Character
         Health -= damage;
         if (Health <= 0) Health = 0;
 
-        HealthChanged?.Invoke($"{Name}'s health reduced by {damage}. Now is {Health}");
+        HealthChanged?.Invoke(this, damage);
     }
 }

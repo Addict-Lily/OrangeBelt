@@ -31,12 +31,10 @@ class Program
                 Console.WriteLine("Healer has no one to heal!");
             }
         }
-        
         foreach (var character in characters.Where(c => c.Health < 50))
         {
             character.Health += 10;
             character.PerformAction();
         }
-            
     }
 }
